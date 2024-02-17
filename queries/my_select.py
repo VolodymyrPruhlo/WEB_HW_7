@@ -2,7 +2,7 @@ from connect import session
 from models import Grade, Groups, Students, Classes
 from sqlalchemy import func, desc
 
-
+# Знайти 5 студентів із найбільшим середнім балом з усіх предметів.
 def select_1():
     return (
         session.query(
@@ -18,7 +18,7 @@ def select_1():
         .all()
     )
 
-
+# Знайти студента із найвищим середнім балом з певного предмета.
 def select_2(subject_id):
     subquery = (
         session.query(Grade.student_id, func.avg(Grade.value).label("average_score"))
